@@ -1,0 +1,122 @@
+layout
+{
+        background rgb(220,220,0)
+        componentsize 300x100
+}
+
+output halogeen
+{
+        txt Halogeen spot aan de muur
+        type digital
+        cardnumber 0
+        channel 1
+}
+
+output halogeenspotboven
+{
+        txt Halogeen spot (3 boven)
+        type analog
+        cardnumber 0
+        channel 0
+}
+
+output halogeenonder
+{
+        txt Halogeen spotjes onder de vliering
+        type analog
+        cardnumber 0
+        channel 1
+}
+
+output spot
+{
+        txt Spot boven de deur
+        type digital
+        cardnumber 0
+        channel 0
+}
+
+input knop2
+{
+        txt Deurspot
+        action spot
+        type button
+        xpos 470
+        ypos 10
+        visibility visible
+}
+
+input knop
+{
+        txt Halogeen
+        action halogeenonderdriekwart
+        type button
+        xpos 10
+        ypos 10
+        visibility visible
+}
+
+input knop3
+{
+        txt Halogeen onder vol
+        action halogeenonder
+        type slider
+        xpos 10
+        ypos 150
+        visibility visible
+}
+
+input knop4
+{
+        txt Halogeen onder vol
+        action halogeenonder
+        type slider
+        xpos 10
+        ypos 500
+        visibility visible
+}
+
+
+
+timetrigger tt1
+{
+        time 20:15-23:59
+        action halogeenbovenhalf
+}
+
+
+input deurschakelaar
+{
+        txt Schakelaar bij de deur
+        action spot
+        cardnumber 0
+        channel 0
+        type digital
+}
+
+
+input voeler
+{
+        txt Bewegingssensor
+        action halogeenbovenhalf
+        cardnumber 0
+        channel 1
+        type sensor
+        delay 10
+}
+
+
+action halogeenbovenhalf
+{
+        halogeenspotboven 60
+}
+
+action halogeenonderdriekwart {
+        halogeenonder 90
+}
+
+action halogeenondervol
+{
+         halogeenonder 180
+}
+
